@@ -10,7 +10,9 @@ import { MentionElement } from './custom-types'
 function renderMention(elem: SlateElement, children: VNode[] | null, editor: IDomEditor): VNode {
   // 当前节点是否选中
   const selected = DomEditor.isNodeSelected(editor, elem)
-  const { value = '' } = elem as MentionElement
+  const { value = '', info } = elem as MentionElement
+  const { href } = info
+  let vhref
 
   // 构建 vnode
   const vnode = h(
@@ -32,8 +34,20 @@ function renderMention(elem: SlateElement, children: VNode[] | null, editor: IDo
     },
     `@${value}` // 如 `@张三`
   )
-
-  return vnode
+  if (href) {
+    vhref = h(
+      'a',
+      {
+        props: {
+          contentEditable: false, // 不可编辑
+          target: '_blank',
+          href: href,
+        },
+      },
+      [vnode]
+    )
+  }
+  return vhref ? vhref : vnode
 }
 
 const conf = {

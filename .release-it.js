@@ -9,11 +9,11 @@ module.exports = {
   //   "before:init": ["git pull origin main", "npm run test"],
   // },
   npm: {
-    publish: true
+    publish: true,
   },
-  // prompt: {
-  //   ghRelease: false,
-  //   glRelease: false,
-  //   publish: false,
-  // },
+  prompt: {
+    ghRelease: false,
+    glRelease: false,
+    publish: false,
+  },
 }
