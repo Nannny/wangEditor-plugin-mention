@@ -98,5 +98,8 @@
     "@wangeditor/editor": ">=5.0.0",
     "snabbdom": "^3.3.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "registry": "http://127.0.0.1:4873/"
+  }
 }
